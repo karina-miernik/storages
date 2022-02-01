@@ -1,3 +1,5 @@
+
+<%=turbo_frame_tag dom_id(@storage) do%>
 <h1>Editing storage</h1>
 
 <%= render "form", storage: @storage %>
@@ -7,4 +9,5 @@
 <div>
   <%= link_to "Show this storage", @storage %> |
   <%= link_to "Back to storages", storages_path %>
-</div>
+</div> 
+<%end%>
