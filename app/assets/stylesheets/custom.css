@@ -25,15 +25,37 @@ box-shadow: none;
   bottom: 0;
   position: fixed;
 }
+#storages{
+  position: relative;
+}
 .booked{
-fill: #8E2938;
+  fill: #E68992;
+}
+.booked:hover{
+  fill: #DB5764;
 }
 .available{
-  fill: #F7E08D;
-}
+  fill: #FEEE85;
 
+}
+.available:hover {
+  fill: #FDE235;
+}
 .book{
-  fill:#DDDA7E;
+  fill:#9BC77F;
+}
+.book:hover {
+  fill: #79B455;
+}
+.available, .book, .booked{
+  transition: all 0.3s;
+  stroke:none;
+}
+.available:hover,
+.book:hover,
+.booked:hover{
+  stroke:#000;
+  pointer-events: all;
 }
 dl{
   display: flex;
@@ -51,8 +73,14 @@ dl dd{
 
 }
 dl dt.red{
-  background: #8E2938;
+  background: #E68992;
 }
 dl dt.yellow{
-  background: #F7E08D;
+  background: #FEEE85;
+}
+.icon-arrow{
+  position: absolute;
+  left:-15%;
+  top:25%;
+  margin:0.5rem;
 }
