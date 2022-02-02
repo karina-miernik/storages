@@ -5,6 +5,7 @@ html, body{
 body{
   height: 100%;
   min-height: 100%;
+  width:100vw;
 }
 .nav{
   background-color: #023047;
@@ -28,11 +29,12 @@ box-shadow: none;
 #storages{
   position: relative;
 }
+.link-storage{
+  text-decoration: none;
+  cursor: pointer;
+}
 .booked{
   fill: #E68992;
-}
-.booked:hover{
-  fill: #DB5764;
 }
 .available{
   fill: #FEEE85;
@@ -52,12 +54,13 @@ box-shadow: none;
   stroke:none;
 }
 .available:hover,
-.book:hover,
-.booked:hover{
+.book:hover{
   stroke:#000;
   pointer-events: all;
 }
-dl{
+.legend{
+  margin:0.5rem;
+  font-size: 0.75rem;
   display: flex;
   flex-direction: row;
 }
@@ -77,6 +80,9 @@ dl dt.red{
 }
 dl dt.yellow{
   background: #FEEE85;
+}
+dl dt.green{
+  background: #9BC77F;
 }
 .icon-arrow{
   position: absolute;

@@ -1,11 +1,13 @@
 <p style="color: green"><%= notice %></p>
 <div class="d-flex flex-column justify-content-center align-items-center">
-<h1 class="m-5">Storage at address</h1>
-<dl>
+<h1 class="m-5">Address</h1>
+<dl class='legend'>
     <dt class="red"></dt>
     <dd>Booked storages</dd>
     <dt class="yellow"></dt>
     <dd>Available storages</dd>
+    <dt class="green"></dt>
+    <dd>Your storage</dd>
 </dl>
 
 <div id="storages" class="text-center mt-5 mb-5">
@@ -14,19 +16,18 @@
   <%@storages.each do |storage| %>
       <%if storage.booked%>
         <rect  x="<%=storage.x%>" y="<%=storage.y%>" width="<%=storage.width%>" height="<%=storage.height%>" class="<%=storage.booked ? "booked" : storage.book ? "book" : storage.available ? "available" : "#C4C4C4"%>" /></a>
-
+        <text x="<%=storage.x%>" y="<%=storage.y+10%>"  font-size="10" fill="black"><%=storage.id%></text>
       <%else%>
-          <%=link_to edit_storage_path(storage) do%>
-        <rect  x="<%=storage.x%>" y="<%=storage.y%>" width="<%=storage.width%>" height="<%=storage.height%>" class="<%=storage.booked ? "booked" : storage.book ? "book" : storage.available ? "available" : "#C4C4C4"%>" stroke="black"/></a>
+        <%=link_to edit_storage_path(storage), class: "link-storage" do%>
+        <rect  x="<%=storage.x%>" y="<%=storage.y%>" width="<%=storage.width%>" height="<%=storage.height%>" class="<%=storage.booked ? "booked" : storage.book ? "book" : storage.available ? "available" : "#C4C4C4"%>" stroke="black">text?</rect>
+        <text x="<%=storage.x%>" y="<%=storage.y+10%>" font-size="10" fill="black"><%=storage.id%></text>
       <%end%>
       <%end%>
   
   <%end%>
   </svg>
 </div>
-<div id="storage"></div>
+
+<%#= link_to "New storage", new_storage_path %>
 
 
-<%= link_to "New storage", new_storage_path %>
-
-</div>
