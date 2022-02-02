@@ -17,6 +17,7 @@ class StoragesController < ApplicationController
 
   # GET /storages/1/edit
   def edit
+    render partial: 'storages/form', locals: {storage: @storage}
   end
 
   # POST /storages or /storages.json
