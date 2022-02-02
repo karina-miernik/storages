@@ -1,3 +1,4 @@
+<%= turbo_frame_tag "edit-storage" do %>
 <%= form_with(model: storage) do |form| %>
   <% if storage.errors.any? %>
     <div style="color: red">
@@ -10,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-
+<div>this is <%=storage.id%></div>
   <div>
     <%= form.label :booked, style: "display: block" %>
     <%= form.check_box :booked %>
@@ -28,4 +29,5 @@
   <div>
     <%= form.submit %>
   </div>
+<% end %>
 <% end %>

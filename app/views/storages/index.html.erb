@@ -9,6 +9,7 @@
     <dt class="green"></dt>
     <dd>Your storage</dd>
 </dl>
+<%= turbo_frame_tag "edit-storage" %>
 
 <div id="storages" class="text-center mt-5 mb-5">
 <i class="icon-arrow bi bi-arrow-90deg-right"></i>
@@ -18,7 +19,7 @@
         <rect  x="<%=storage.x%>" y="<%=storage.y%>" width="<%=storage.width%>" height="<%=storage.height%>" class="<%=storage.booked ? "booked" : storage.book ? "book" : storage.available ? "available" : "#C4C4C4"%>" /></a>
         <text x="<%=storage.x%>" y="<%=storage.y+10%>"  font-size="10" fill="black"><%=storage.id%></text>
       <%else%>
-        <%=link_to edit_storage_path(storage), class: "link-storage" do%>
+        <%=link_to edit_storage_path(storage),data: { "turbo-frame": "edit-storage" } , class: "link-storage" do%>
         <rect  x="<%=storage.x%>" y="<%=storage.y%>" width="<%=storage.width%>" height="<%=storage.height%>" class="<%=storage.booked ? "booked" : storage.book ? "book" : storage.available ? "available" : "#C4C4C4"%>" stroke="black">text?</rect>
         <text x="<%=storage.x%>" y="<%=storage.y+10%>" font-size="10" fill="black"><%=storage.id%></text>
       <%end%>
