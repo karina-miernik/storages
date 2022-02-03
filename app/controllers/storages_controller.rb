@@ -17,7 +17,6 @@ class StoragesController < ApplicationController
 
   # GET /storages/1/edit
   def edit
-    render partial: 'storages/form', locals: {storage: @storage}
   end
 
   # POST /storages or /storages.json
@@ -39,6 +38,12 @@ class StoragesController < ApplicationController
   def update
     respond_to do |format|
       if @storage.update(storage_params)
+          format.turbo_stream do
+            render turbo_stream: [
+            turbo_stream.replace(@storage, partial: "storages/storage", locals: {storage: @storage}),
+              turbo_stream.update('modal',partial: 'storages/notice')
+            ]
+          end
         format.html { redirect_to storage_url(@storage), notice: "Storage was successfully updated." }
         format.json { render :show, status: :ok, location: @storage }
       else
@@ -66,6 +71,6 @@ class StoragesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def storage_params
-      params.require(:storage).permit(:booked, :book, :available)
+      params.require(:storage).permit( :book, :available)
     end
 end
