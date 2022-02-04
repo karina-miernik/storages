@@ -40,13 +40,18 @@ class StoragesController < ApplicationController
       if @storage.update(storage_params)
           format.turbo_stream do
             render turbo_stream: [
-            turbo_stream.replace(@storage, partial: "storages/storage", locals: {storage: @storage}),
-              turbo_stream.update('modal',partial: 'storages/notice')
+            turbo_stream.replace('svg', partial: "storages/storage", locals: {storages: Storage.all}),
+            turbo_stream.update('modal',partial: 'storages/notice')
             ]
           end
         format.html { redirect_to storage_url(@storage), notice: "Storage was successfully updated." }
         format.json { render :show, status: :ok, location: @storage }
       else
+        format.turbo_stream do
+          render turbo_stream: [
+          turbo_stream.update('modal', partial: 'storages/error')
+          ]
+        end
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @storage.errors, status: :unprocessable_entity }
       end
