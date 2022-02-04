@@ -1,4 +1,5 @@
   <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <p class="alert-heading m-0">Successfully edited storage</p>
+    <p class="alert-heading m-0">
+    Successfully <%= @storage.book ? 'booked' : 'unbooked'%> storage <%= @storage.id%></p>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
