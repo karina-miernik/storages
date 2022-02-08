@@ -1,9 +1,8 @@
-<%= turbo_frame_tag "edit-storage" do %>
-<%= form_with(model: storage) do |form| %>
+
+<%= form_with(model: storage, class: "form") do |form| %>
   <% if storage.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(storage.errors.count, "error") %> prohibited this storage from being saved:</h2>
-
       <ul>
         <% storage.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,23 +10,25 @@
       </ul>
     </div>
   <% end %>
-<div>this is <%=storage.id%></div>
-  <div>
-    <%= form.label :booked, style: "display: block" %>
-    <%= form.check_box :booked %>
+  <h3 class="text-center">Storage number <%=storage.id%></h3>
+  <p class="small-text">Dimensions W x H [cm]: <%=storage.width%> x <%=storage.height%></p>
+  <%if storage.book?%>
+      <div class="form-container">
+    <p>You've just booked this storage. Do you want to unbook?</p>
+      <%= form.check_box :book, :checked => false, :style => 'visibility: hidden' %>
+      <%= form.check_box :available, :checked => true, :style => 'visibility: hidden'%>
+      <%= form.submit "Unbook", class: "btn form-button"%>
+      </div>
+    <%end%>
+  <%if storage.available?%>
+  <div class="form-container">
+      <p>This storage is available. You can book it now</p>
+      <%= form.check_box :book, :checked => true, :style => 'visibility: hidden' %>
+      <%= form.check_box :available, :checked => false, :style => 'visibility: hidden'%>
+      <%= form.submit "Book", class: "btn form-button"%>
   </div>
-
+  <%end%>
   <div>
-    <%= form.label :book, style: "display: block" %>
-    <%= form.check_box :book %>
-  </div>
-
-  <div>
-    <%= form.label :available, style: "display: block" %>
-    <%= form.check_box :available %>
-  </div>
-  <div>
-    <%= form.submit %>
   </div>
 <% end %>
-<% end %>
+
