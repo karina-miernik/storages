@@ -6,6 +6,10 @@ export default class extends Controller {
   }
 
   close(){
-   this.element.remove()
+    this.element.style.transition = "opacity "+0.5+"s ease";
+    this.element.style.opacity=0;
+      setTimeout(()=>{
+        this.element.remove()
+      },1000)
   }
 }
