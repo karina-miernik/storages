@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "modal", method: :post do %>
-  <div data-controller="form">
+  <div data-controller="form" class="wrap-modal">
     <div class="modal d-flex" >
       <div class="m-1 bg-white rounded shadow">
         <div class="px-4 py-3 border-b border-gray-200 sm:px-6 d-flex flex-column" >
@@ -8,6 +8,6 @@
         </div>
       </div>  
     </div>
-    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-overlay" id="modal-overlay" data-action="click->form#close"></div>
   </div>
 <% end %>
