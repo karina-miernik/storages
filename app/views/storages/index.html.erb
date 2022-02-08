@@ -1,6 +1,5 @@
-
+<div class="wrapper">
 <p style="color: green"><%= notice %></p>
-
 <div class="d-flex flex-column justify-content-center align-items-center">
 <h1 class="m-5">Address</h1>
 <dl class='legend'>
@@ -11,5 +10,6 @@
     <dt class="green"></dt>
     <dd>Your storage</dd>
 </dl>
-<%=render partial: 'storages'%>
-<%= turbo_frame_tag "modal" %>
+
+<%=render partial: 'storages', locals: {storages: @storages}%>
+</div>
