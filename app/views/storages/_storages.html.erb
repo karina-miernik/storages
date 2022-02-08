@@ -1,16 +1,16 @@
 <div id="storages" class="text-center mt-5 mb-5">
 <i class="icon-arrow bi bi-arrow-90deg-right"></i>
-<svg width="193" height="248" viewBox="0 0 193 248" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <%@storages.each do |storage| %>
+  <svg id="svg" width="193" height="248" viewBox="0 0 193 248" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <%storages.each do |storage| %>
       <%if storage.booked%>
-        <rect id="<%= dom_id storage %>" x="<%=storage.x%>" y="<%=storage.y%>" width="<%=storage.width%>" height="<%=storage.height%>" class="booked"/>
+        <rect  x="<%=storage.x%>" y="<%=storage.y%>" width="<%=storage.width%>" height="<%=storage.height%>" class="booked"/>
         <text x="<%=storage.x%>" y="<%=storage.y+10%>"  font-size="10" fill="black"><%=storage.id%></text>
       <%else%>
         <%=link_to edit_storage_path(storage),data: { "turbo-frame": "modal"},class: "link-storage" do%>
-        <rect id="<%= dom_id storage %>" x="<%=storage.x%>" y="<%=storage.y%>" width="<%=storage.width%>" height="<%=storage.height%>" class="<%=storage.book ? "book default" : storage.available ? "available defult" : "#C4C4C4"%>" stroke=""/>
-        <text x="<%=storage.x%>" y="<%=storage.y+10%>" font-size="10" fill="black"><%=storage.id%></text>
+          <rect id="<%= dom_id storage %>" x="<%=storage.x%>" y="<%=storage.y%>" width="<%=storage.width%>" height="<%=storage.height%>" class="<%=storage.book ? "book" : storage.available ? "available" : "#C4C4C4"%>" stroke=""/>
+          <text x="<%=storage.x%>" y="<%=storage.y+10%>" font-size="10" fill="black"><%=storage.id%></text>
+        <%end%>
       <%end%>
-      <%end%>
-  <%end%>
+    <%end%>
   </svg>
 </div>
