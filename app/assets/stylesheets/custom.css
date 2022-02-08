@@ -6,13 +6,34 @@ body{
   height: 100%;
   min-height: 100%;
   width:100vw;
+  padding-bottom: 5vh;
 }
 .nav{
   background-color: #023047;
   color: #fff;
+  position: fixed;
+  top:0;
+  width: 100%;
 }
 .navbar-toggler:focus{
 box-shadow: none;
+}
+.navbar-dark .navbar-toggler{
+transition: 0.3s ease-out;
+}
+.navbar-dark:hover .navbar-toggler:hover{
+border-color: #fff;
+}
+.menu{
+  margin-top:3rem;
+}
+.link{
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+  transition: 0.3s ease-out;
+}
+.link:hover{
+  color:#fff;
 }
 .menu{
   display: flex;
@@ -25,6 +46,18 @@ box-shadow: none;
   color: #fff;
   bottom: 0;
   position: fixed;
+  height: 5vh;
+  margin-top: 3rem;
+}
+.wrapper{
+  margin: 4rem 0;
+  padding-bottom: 5rem;
+  width: 100%;
+  height: 100vh;
+}
+h1{
+  color: #023047;
+  letter-spacing: 0.25rem;
 }
 #storages{
   position: relative;
@@ -49,8 +82,9 @@ box-shadow: none;
 .book:hover {
   fill: #79B455;
 }
+
 .available, .book, .booked{
-  transition: all 0.3s;
+  transition: all 0.3s ease-out;
   stroke:none;
 }
 .available:hover,
@@ -89,4 +123,99 @@ dl dt.green{
   left:-15%;
   top:25%;
   margin:0.5rem;
+}
+
+/* form */
+.edit-form{
+  display: flex ;
+  flex-direction: row;
+  justify-content: center;
+}
+.small-text{
+  color:rgb(136, 130, 130);
+  text-align: center;
+}
+.form-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+.form-container p{
+  align-self: center;
+  margin: 0 auto;
+}
+.form-button{
+background-color: rgb(129, 177, 32);
+transition: all 0.3s;
+color: #fff;
+text-transform: uppercase;
+letter-spacing: 0.1rem;
+}
+.form-button:hover{
+  background-color: #fff;
+  color:rgb(129, 177, 32);
+  border: 1px solid rgb(129, 177, 32);
+}
+.alert{
+  display: flex;
+  margin:0 auto;
+  width:40%;
+  justify-content: center;
+  align-items: center;
+}
+.modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  border-radius: 6px;
+  justify-content: center;
+  z-index: 1010;
+}
+.modal-overlay{
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.6);
+  opacity: 1;
+}
+.modal-button{
+  width:100%;
+  height: 1rem;
+  padding: 0.25rem;
+  color:rgb(136, 130, 130);
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.25rem;
+}
+.modal-button:hover{
+  color:rgb(71, 68, 68);
+}
+.form{
+  margin:1.5rem;
+}
+.fadein{
+  animation: fadein .5s;
+}
+.fadeout{
+  animation: fadeout .5s;
+}
+@keyframes fadein {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
 }
