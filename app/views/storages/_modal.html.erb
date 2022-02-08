@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "modal", method: :post do %>
+  <div data-controller="form">
+    <div class="modal d-flex" >
+      <div class="m-1 bg-white rounded shadow">
+        <div class="px-4 py-3 border-b border-gray-200 sm:px-6 d-flex flex-column" >
+          <button type="button" class="modal-button" data-action="click->form#close">X</button> 
+          <%= yield %>
+        </div>
+      </div>  
+    </div>
+    <div class="modal-overlay" id="modal-overlay"></div>
+  </div>
+<% end %>
