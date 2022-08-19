@@ -14,3 +14,12 @@
     <%end%>
   </svg>
 </div>
+<%=render partial: 'storages/new_form', locals: {storage: Storage.new}%>
+<%#= turbo_frame_tag("new", class: "mb-4") do%>
+<%#=link_to "New", new_storage_path%>
+<%#end%>
+<div data-controller="greet" class="d-flex flex-column gap-2">
+  <input data-greet-target="name" type="text">
+  <button data-action="click->greet#greet" class="btn form-button">Greet</button>
+  <span data-greet-target="result"></span>
+</div>

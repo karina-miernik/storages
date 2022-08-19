@@ -15,19 +15,32 @@ class StoragesController < ApplicationController
     @storage = Storage.new
   end
 
+
   # GET /storages/1/edit
   def edit
   end
 
   # POST /storages or /storages.json
   def create
+    @last_id = Storage.all.last.id
     @storage = Storage.new(storage_params)
-
+    @storage.id = @last_id + 1
     respond_to do |format|
       if @storage.save
-        format.html { redirect_to storage_url(@storage), notice: "Storage was successfully created." }
-        format.json { render :show, status: :created, location: @storage }
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('new_form', partial: 'storages/new_form', locals: {storage: Storage.new}),
+            turbo_stream.update('svg', partial: 'storages/storage', locals: {storages: Storage.all})
+          ]
+        end
+        format.html { redirect_to root_path, notice: "Storage was successfully created." }
+        format.json { render :index, status: :created, location: @storages }
       else
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('new_form', partial: 'storages/new_form', locals: {storage: @storage})
+          ]
+        end
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @storage.errors, status: :unprocessable_entity }
       end
@@ -44,8 +57,8 @@ class StoragesController < ApplicationController
             turbo_stream.update('modal',partial: 'storages/notice')
             ]
           end
-        format.html { redirect_to storage_url(@storage), notice: "Storage was successfully updated." }
-        format.json { render :show, status: :ok, location: @storage }
+        # format.html { redirect_to storage_url(@storage), notice: "Storage was successfully updated." }
+        # format.json { rendesr :show, status: :ok, location: @storage }
       else
         format.turbo_stream do
           render turbo_stream: [
@@ -61,8 +74,13 @@ class StoragesController < ApplicationController
   # DELETE /storages/1 or /storages/1.json
   def destroy
     @storage.destroy
-
     respond_to do |format|
+      format.turbo_stream do 
+        render turbo_stream: [
+          turbo_stream.remove(@storage),
+          turbo_stream.update('svg', partial: "storages/storage", locals: {storages: Storage.all})
+        ]
+      end
       format.html { redirect_to storages_url, notice: "Storage was successfully destroyed." }
       format.json { head :no_content }
     end
@@ -76,6 +94,6 @@ class StoragesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def storage_params
-      params.require(:storage).permit( :book, :available)
+      params.require(:storage).permit( :book, :available, :booked, :x, :y, :width, :height)
     end
 end

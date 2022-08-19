@@ -1,0 +1,55 @@
+<div id="new_form">
+<h1>New storage</h1>
+  <%=form_for(storage, method: :post, remote: :true) do |f| %>
+    <% if storage.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(storage.errors.count, "error") %> prohibited
+          this post from being saved:</h2>
+      <ul>
+      <% storage.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+  
+    <div class="field">
+      <%= f.label :x %><br />
+      <%= f.number_field :x %>
+    </div>
+    <div class="field">
+      <%= f.label :y %><br />
+      <%= f.number_field :y %>
+    </div>
+    <div class="field">
+      <%= f.label :width %><br />
+      <%= f.number_field :width %>
+    </div>
+    <div class="field">
+      <%= f.label :height %><br />
+      <%= f.number_field :height %>
+    </div>
+      <div class="field">
+      <%= f.label :available %> <br />
+      <%= f.check_box :available%> <br />
+    </div>
+    <div class="field">
+      <%= f.label :booked %> <br />
+      <%= f.check_box :booked, checked: :false%> <br />
+    </div>
+    <div class="field">
+      <%= f.label :book %> <br />
+      <%= f.check_box :book, checked: :false %> <br />
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+<br>
+
+<div>
+  <%= link_to "Back to storages", storages_path %>
+</div>
+<br>
+</div>

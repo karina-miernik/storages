@@ -13,22 +13,23 @@
   <h3 class="text-center">Storage number <%=storage.id%></h3>
   <p class="small-text">Dimensions W x H [cm]: <%=storage.width%> x <%=storage.height%></p>
   <%if storage.book?%>
-      <div class="form-container">
-    <p>You've just booked this storage. Do you want to unbook?</p>
+    <div class="form-container">
+      <p>You've just booked this storage. Do you want to unbook?</p>
       <%= form.check_box :book, :checked => false, :style => 'visibility: hidden' %>
       <%= form.check_box :available, :checked => true, :style => 'visibility: hidden'%>
       <%= form.submit "Unbook", class: "btn form-button"%>
-      </div>
-    <%end%>
+    </div>
+  <%end%>
   <%if storage.available?%>
-  <div class="form-container">
+    <div class="form-container">
       <p>This storage is available. You can book it now</p>
       <%= form.check_box :book, :checked => true, :style => 'visibility: hidden' %>
       <%= form.check_box :available, :checked => false, :style => 'visibility: hidden'%>
       <%= form.submit "Book", class: "btn form-button"%>
-  </div>
+    </div>
   <%end%>
-  <div>
+  <div class="d-flex justify-content-center">
+  <%=button_to "Delete storage", storage_path(@storage), method: :delete, class: "btn form-button --danger"%>
   </div>
 <% end %>
 

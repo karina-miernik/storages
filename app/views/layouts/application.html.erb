@@ -14,10 +14,9 @@
 
   <body>
     <%= render 'layouts/navigation'%>
-    <div class="d-flex h-100 w-100 flex-column p-0">
+    <div class="container d-flex h-100 w-100 flex-column">
       <%= yield %>
       <%= turbo_frame_tag "modal"%>
     </div>
-    <%= render 'layouts/footer'%>
   </body>
 </html>
