@@ -12,8 +12,13 @@ body{
   background-color: #023047;
   color: #fff;
   position: fixed;
+  z-index: 3;
   top:0;
   width: 100%;
+  min-height:10vh;
+}
+.container{
+  padding-top:10vh;
 }
 .navbar-toggler:focus{
 box-shadow: none;
@@ -23,9 +28,6 @@ transition: 0.3s ease-out;
 }
 .navbar-dark:hover .navbar-toggler:hover{
 border-color: #fff;
-}
-.menu{
-  margin-top:3rem;
 }
 .link{
   text-decoration: none;
@@ -37,6 +39,7 @@ border-color: #fff;
 }
 .menu{
   display: flex;
+  margin-top:5rem;
   flex-direction: column;
   justify-content: center;
 }
@@ -153,10 +156,19 @@ color: #fff;
 text-transform: uppercase;
 letter-spacing: 0.1rem;
 }
+.--danger{
+  background-color: #c63333;
+}
+
 .form-button:hover{
   background-color: #fff;
   color:rgb(129, 177, 32);
   border: 1px solid rgb(129, 177, 32);
+}
+.--danger:hover{
+  background-color: #fff;
+  color: #c63333;
+  border: 1px solid #c63333;
 }
 .alert{
   display: flex;
