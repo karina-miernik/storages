@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_084051) do
+ActiveRecord::Schema.define(version: 2022_08_01_140827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "settings", force: :cascade do |t|
+    t.string "index"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "storages", force: :cascade do |t|
     t.boolean "booked"
@@ -21,8 +27,8 @@ ActiveRecord::Schema.define(version: 2022_02_01_084051) do
     t.boolean "available"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "x", precision: 4, scale: 1
-    t.decimal "y", precision: 4, scale: 1
+    t.float "x"
+    t.float "y"
     t.decimal "width"
     t.decimal "height"
   end
